@@ -5,3 +5,6 @@ Library
 Temp
 UserSettings
 Logs
+*.csproj
+user.keystore
+*.sln
