@@ -1,16 +1,23 @@
+using Constant;
 using UnityEngine;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayGameManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text detailText;
     [SerializeField] private TMP_Text versionText;
+    [SerializeField] private Button btnLeaderboard;
+    [SerializeField] private Button btnAchievement;
     // Start is called before the first frame update
     private int i = 0;
     private void Start()
     {
+        btnLeaderboard.gameObject.SetActive(false);
+        btnAchievement.gameObject.SetActive(false);
         versionText.text = GetVersionCode();
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
@@ -32,7 +39,10 @@ public class PlayGameManager : MonoBehaviour
             var imgUrl = PlayGamesPlatform.Instance.GetUserImageUrl();
             
             Debug.Log($"User Detail : {userName} {id} {imgUrl}");
-            detailText.text = $"User Detail : {userName} {id} {imgUrl}";
+            detailText.text = $"User Detail : \n username: {userName} \n id: {id} \n url image: {imgUrl}";
+            
+            btnLeaderboard.gameObject.SetActive(true);
+            btnAchievement.gameObject.SetActive(true);
         }
         else
         {
@@ -46,16 +56,8 @@ public class PlayGameManager : MonoBehaviour
     
     public void OnManualAuth()
     {
-        PlayGamesPlatform.Instance.ManuallyAuthenticate(status =>
-        {
-            Debug.Log($"Manual auth result: {status}");
-            if (status != SignInStatus.Success)
-            {
-                i++;
-                Debug.Log($"Sign in failed.... {i}");
-                detailText.text = $"Sign in failed.... {i}";
-            }
-        });
+        i++;
+        PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication);
     }
 
     private string GetVersionCode()
@@ -97,5 +99,14 @@ public class PlayGameManager : MonoBehaviour
         return _GetBuildNumber();
     }
 #endif
-    
+
+    public void MoveToLeaderBoard()
+    {
+        SceneManager.LoadScene("Leaderboard");
+    }
+    public void MoveToAchievement()
+    {
+        SceneManager.LoadScene("Achievement");
+    }
+
 }
