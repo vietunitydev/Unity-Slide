@@ -8,3 +8,4 @@ Logs
 *.csproj
 user.keystore
 *.sln
+build
