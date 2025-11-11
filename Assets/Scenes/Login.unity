@@ -1663,8 +1663,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detailText: {fileID: 1168320860}
   versionText: {fileID: 934124191}
-  btnLeaderboard: {fileID: 0}
-  btnAchievement: {fileID: 0}
+  btnLeaderboard: {fileID: 1606592591}
+  btnAchievement: {fileID: 312304169}
 --- !u!4 &1783105620
 Transform:
   m_ObjectHideFlags: 0

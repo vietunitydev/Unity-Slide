@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activatePgsIfNeeded: 1
-  detailText: {fileID: 0}
+  detailText: {fileID: 1599025672}
 --- !u!4 &1585732627
 Transform:
   m_ObjectHideFlags: 0
