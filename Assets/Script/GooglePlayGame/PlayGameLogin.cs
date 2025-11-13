@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayGameManager : MonoBehaviour
+public class PlayGameLogin : MonoBehaviour
 {
     [SerializeField] private TMP_Text detailText;
     [SerializeField] private TMP_Text versionText;
